@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  your-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"   # порт вашего приложения
+      - "8778:8778"   # порт Jolokia
+
+  telegraf:
+    image: telegraf:1.21
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    depends_on:
+      - your-app
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3001" # интерфейс Grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=1234567890Qq
+    depends_on:
+      - telegraf
+    restart: unless-stopped
