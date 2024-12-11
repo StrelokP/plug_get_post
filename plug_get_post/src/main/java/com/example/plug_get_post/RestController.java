@@ -18,15 +18,15 @@ public class RestController {
 
     @GetMapping("/static")
     public String getJsonStatic() throws InterruptedException {
-        User.sleepRandom();
+        Login.sleepRandom();
         return "{\"key\": \"value\"}";
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User.LoginResponse> postLogin(@Valid @RequestBody User.LoginRequest request) throws InterruptedException {
+    public ResponseEntity<Login.User> postLogin(@Valid @RequestBody Login.User request) throws InterruptedException {
         String currentDate = LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE);
-        User.sleepRandom();
-        User.LoginResponse response = new User.LoginResponse(request.getLogin(), request.getPassword(), currentDate);
+        Login.sleepRandom();
+        Login.User response = new Login.User(request.getLogin(), request.getPassword(), currentDate);
         return ResponseEntity.ok(response);
     }
 
