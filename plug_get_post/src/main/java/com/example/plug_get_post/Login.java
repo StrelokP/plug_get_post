@@ -10,8 +10,7 @@ import java.util.Random;
 
 public class Login {
 
-    @Getter
-    @Setter
+
     public static class User {
 
         @NotBlank(message = "Login не может быть пустым")
@@ -26,25 +25,25 @@ public class Login {
         private String timestamp;
 
 
-//        public String getPassword() {
-//            return password;
-//        }
-//
-//        public void setPassword(String password) {
-//            this.password = password;
-//        }
-//
-//        public String getLogin() {
-//            return login;
-//        }
-//
-//        public void setLogin(String login) {
-//            this.login = login;
-//        }
-//
-//        public String getTimestamp() {
-//            return timestamp;
-//        }
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getLogin() {
+            return login;
+        }
+
+        public void setLogin(String login) {
+            this.login = login;
+        }
+
+        public String getTimestamp() {
+            return timestamp;
+        }
 
         public User(String login, String password, String timestamp) {
             this.login = login;
