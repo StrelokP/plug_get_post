@@ -7,4 +7,4 @@ WORKDIR /app
 COPY target/dependency ./lib
 COPY target/plug_get_post-0.0.1-SNAPSHOT.jar ./application.jar
 
-ENTRYPOINT ["java", "-cp", "./lib/*:./application.jar", "com.example.plux_get_post.PlugGetPostApplication"]
+ENTRYPOINT ["java", "-cp", "./lib/*:./application.jar", "com.example.plug_get_post.PlugGetPostApplication"]
