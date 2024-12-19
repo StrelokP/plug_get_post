@@ -1,15 +1,10 @@
-# Dockerfile
-FROM openjdk:11-jre-slim
+FROM bellsoft/liberica-openjdk-debian:17
 
+RUN adduser --system spring-boot && addgroup --system spring-boot && adduser spring-boot spring-boot
+USER spring-boot
 
-# Копируем ваш .jar файл в контейнер
-COPY target/plug_get_post-0.0.1-SNAPSHOT.jar /app/plug_get_post-0.0.1-SNAPSHOT.jar
-
-# Копируем Jolokia agent
-COPY docker/jolokia-agent-jvm-javaagent.jar /app/jolokia-agent-jvm-javaagent.jar
-
-# Устанавливаем рабочую директорию
 WORKDIR /app
+COPY target/dependency ./lib
+COPY target/plug_get_post-0.0.1-SNAPSHOT.jar ./application.jar
 
-# Определяем команду запуска
-CMD ["sh", "-c", "java -javaagent:/docker/jolokia-agent-jvm-javaagent.jar -jar plug_get_post-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-cp", "./lib/*:./application.jar", "com.example.plux_get_post.PlugGetPostApplication"]

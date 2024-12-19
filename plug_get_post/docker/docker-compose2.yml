@@ -1,6 +1,4 @@
 services:
-
-
   postgres:
     image: postgres:12
     container_name: postgres_container
@@ -14,9 +12,6 @@ services:
       - "5431:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-
-
 
   postgres-exporter:
     image: wrouesnel/postgres_exporter:latest
@@ -35,7 +30,6 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     depends_on:
       - postgres-exporter
-
 
 volumes:
   postgres_data:
