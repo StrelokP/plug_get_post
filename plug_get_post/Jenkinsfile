@@ -14,7 +14,7 @@ pipeline {
             steps {
                 echo "=========== start builde image ========="
                 dir ('plug_get_post') {
-                    sh 'docker build -t plug. '
+                    sh 'docker build -t plug . '
                     }
                     }}}
 }
