@@ -1,0 +1,20 @@
+#!groovy
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent {
+        label 'master'
+        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("build docker image") {
+            steps {
+                echo "=========== start builde image ========="
+                dir ('plug_get_post') {
+                    sh 'docker build -t plug. '
+                    }
+                    }}}
+}

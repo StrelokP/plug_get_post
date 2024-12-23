@@ -4,7 +4,7 @@ RUN adduser --system spring-boot && addgroup --system spring-boot && adduser spr
 USER spring-boot
 
 WORKDIR /app
-COPY target/dependency ./lib
+
 COPY target/plug_get_post-0.0.1-SNAPSHOT.jar ./application.jar
 
 ENTRYPOINT ["java", "-jar", "./application.jar"]
