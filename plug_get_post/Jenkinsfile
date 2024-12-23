@@ -10,6 +10,14 @@ pipeline {
         timestamps()
     }
     stages {
+        stage("mvn") {
+            steps{
+                echo "========== mvn ========="
+                dir('plug_get_post'){
+                    sh 'mvn clean package'
+                }
+            }
+        }
         stage("build docker image") {
             steps {
                 echo "=========== start builde image ========="
